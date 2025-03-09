@@ -1,5 +1,4 @@
 pipeline {
-
   environment {
     dockerimagename = "ramann123/myimage"
     dockerImage = ""
@@ -9,29 +8,25 @@ pipeline {
 
   stages {
     stage('Build image') {
-      steps{
+      steps {
         script {
-          dockerImage = docker.build dockerimagename
+          dockerImage = docker.build(dockerimagename)
         }
       }
     }
 
     stage('Pushing Image') {
       environment {
-               registryCredential = 'dockerhublogin'
-           }
-      steps{
+        registryCredential = 'dockerhublogin'
+      }
+      steps {
         script {
-          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
+          docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
             dockerImage.push("latest")
           }
         }
       }
     }
-  }
-} 
-
-
 
     stage('Apply Kubernetes files') {
       steps {
@@ -45,4 +40,3 @@ pipeline {
     }
   }
 }
-
