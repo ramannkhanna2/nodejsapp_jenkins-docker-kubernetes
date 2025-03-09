@@ -17,6 +17,7 @@ spec:
       containers:
       - name: nodeserver
         image: ramann123/myimage:latest
+        imagePullPolicy: Always  # Ensures the latest image is always pulled
         ports:
         - containerPort: 3000
         
