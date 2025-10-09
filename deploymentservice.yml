@@ -17,7 +17,7 @@ spec:
       containers:
       - name: nodeserver
         #image: ramann123/myimage:latest
-        image: testreg2025.azurecr.io/ramannkhanna2/nodejsapp_jenkins-docker-kubernetes:106
+        image: testreg2025.azurecr.io/ramannkhanna2/nodejsapp_jenkins-docker-kubernetes:latest
         imagePullPolicy: Always  # Ensures the latest image is always pulled
         ports:
         - containerPort: 3000
