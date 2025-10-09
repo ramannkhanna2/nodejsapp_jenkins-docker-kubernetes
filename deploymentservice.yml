@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
       - name: nodeserver
-        image: ramann123/myimage:latest
+        #image: ramann123/myimage:latest
+        image: testreg2025.azurecr.io/ramannkhanna2/nodejsapp_jenkins-docker-kubernetes:106
         imagePullPolicy: Always  # Ensures the latest image is always pulled
         ports:
         - containerPort: 3000
@@ -31,9 +32,10 @@ metadata:
 spec:
   selector:
     app: nodeapp 
-  type: NodePort
+  #type: NodePort
+  type: LoadBalancer
   ports:
   - protocol: TCP
     port: 5000
     targetPort: 3000
-    nodePort: 31110
+    #nodePort: 31110
